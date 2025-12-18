@@ -1,0 +1,312 @@
+:root {
+  --bg: #081a07;
+  --card: #0b1622;
+  --muted: #9aa5b1;
+  --accent: #2dd43e;
+  --text: #e6eef6;
+  --glass: rgba(255, 255, 255, 0.03);
+
+  --radius: 12px;
+  --container: 80%;
+  --gap: 20px;
+  --transition: 240ms cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial;
+  /* smoother, dark-blue gradient instead of bright green */
+  background: linear-gradient(180deg, var(--bg) 100vh, #020810 100vh);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45;
+}
+
+/* LAYOUT */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 28px;
+  width: 100%;
+}
+.site-header {
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(6px);
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+
+.header-inner {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  text-decoration: none;
+}
+.brand-name {
+  font-weight: 600;
+}
+
+.nav {
+  display: flex;
+  gap: 16px;
+}
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+.nav a:hover {
+  color: var(--text);
+  background: var(--glass);
+}
+
+.btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+}
+.btn.primary {
+  background: linear-gradient(90deg, var(--accent), #60fa84);
+  color: #051019;
+  border: none;
+}
+.btn.ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* HERO
+   Move the star background to the full-width .hero element (not the inner container).
+   Use background-size: cover so the image fills the hero area without stretching.
+*/
+.hero {
+  position: relative;
+  padding: 40px 0;
+  /* ensure hero spans full viewport width and the background fills it */
+  background-image: url("images/StarsA.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  min-height: 60vh; /* adjust as needed */
+  display: flex;
+  align-items: center;
+}
+
+/* keep the centered constrained content inside .hero-inner */
+.hero-inner {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 28px;
+  background: transparent; /* ensure inner doesn't block background */
+}
+.hero-left {
+  flex: 1;
+}
+.hero-image {
+  flex: 0 0 220px;
+}
+.hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Responsive behavior */
+@media (max-width: 900px) {
+  .hero-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-image {
+    max-width: 220px;
+  }
+}
+
+h1 {
+  font-size: 32px;
+  margin: 6px 0 8px;
+}
+.lead {
+  color: var(--muted);
+  max-width: 55ch;
+}
+.cta-row {
+  margin-top: 16px;
+}
+.hero-stats {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+  color: var(--muted);
+}
+.hero-stats li {
+  font-weight: 600;
+}
+
+/* Cards and project grid */
+.card {
+  display: block;
+  max-width: 320px;
+  padding: 16px;
+  border-radius: 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  text-decoration: none;
+  color: var(--text);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.card-title {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.card-description {
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.card-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tag {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 9px;
+  color: var(--muted);
+}
+
+/* sections */
+.section {
+  padding: 36px 0;
+}
+.section-head {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+.muted {
+  color: var(--muted);
+}
+.grid {
+  display: grid;
+  gap: var(--gap);
+}
+.about-grid {
+  grid-template-columns: 1fr 320px;
+}
+
+@media (max-width: 880px) {
+  .hero-inner,
+  .about-grid {
+    flex-direction: column;
+  }
+  .hero-right {
+    width: 100%;
+  }
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* small */
+.small {
+  font-size: 13px;
+}
+.muted.small {
+  color: var(--muted);
+}
+
+/* footer */
+.site-footer {
+  padding: 22px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.02);
+  margin-top: 36px;
+}
+
+/* modal (used by the lightweight JS modal created at runtime) */
+.simple-modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 200;
+}
+.simple-modal .modal-card {
+  background: linear-gradient(180deg, #07101a, #0b1622);
+  padding: 18px;
+  border-radius: 12px;
+  max-width: 880px;
+  width: calc(100% - 40px);
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.simple-modal .close-btn {
+  margin-top: 12px;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  color: var(--muted);
+}
+
+/* light theme (toggle) */
+:root.light {
+  --bg: #f6fbff;
+  --card: #ffffff;
+  --muted: #0d973b;
+  --accent: #0ea545;
+  --text: #03111a;
+  --glass: rgba(2, 6, 23, 0.02);
+}
